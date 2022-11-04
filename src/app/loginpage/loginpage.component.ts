@@ -12,8 +12,10 @@ export class LoginpageComponent implements OnInit {
   
   form!: FormGroup;
   submitted = false;
+  userdetails: any ='';
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  constructor(private router: Router, private formBuilder: FormBuilder,
+    private service:UserdetailsService ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -41,13 +43,13 @@ export class LoginpageComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     console.log(this.form.value);
-
     if (this.form.invalid) {
       return;
     }
-    this.router.navigate(['/userdetails']);
+    alert('Employes Added')
+    this.router.navigate(['/userdetails'], {queryParams:{data:this.userdetails}});
   }
-
+ 
   onReset(): void {
     this.submitted = false;
     this.form.reset();
