@@ -75,8 +75,8 @@
         <div *ngIf="f['phone'].errors['phone']">phonenumber is invalid</div>
       </div>
     </div>
+    <div><label>GENDER</label></div>
     <div class="form-check">
-      <div><label>GENDER</label></div>
       <input
         class="form-check-input"
         type="radio"
@@ -103,7 +103,7 @@
     <div class="form-group">
       <button type="submit" (click)="onSubmit()" class="btn btn-primary">
         Register
-      </button>
+      </button> &nbsp;
       <button
         type="button"
         (click)="onReset()"
