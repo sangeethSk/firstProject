@@ -1,0 +1,116 @@
+<div class="register-form container">
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label> Name</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+      />
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">name is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Address</label>
+      <input
+        type="textarea"
+        formControlName="address"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+      />
+      <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+        <div *ngIf="f.address.errors.required">Address is required</div>
+        <div *ngIf="f.address.errors.minlength">
+          Address must be at least 10 characters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>DOB</label>
+      <input
+        type="date"
+        formControlName="date"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.date.errors }"
+      />
+      <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+        <div *ngIf="f.date.errors.required">DOB is required</div>
+        <div *ngIf="f.date.errors.date">DOB is invalid</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="role">ROLE</label>
+      <select
+        class="custom-select"
+        id="role"
+        formControlName="role"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.role.errors }"
+      >
+        <option value="1">Admin</option>
+        <option value="2">Manager</option>
+        <option value="3">HR</option>
+        <option value="4">Junor Developer</option>
+      </select>
+      <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+        <div *ngIf="f.role.errors.required">Role is required</div>
+        <div *ngIf="f.role.errors.date">Role is invalid</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>PHONE</label>
+      <input
+        type="text"
+        formControlName="phone"
+        class="form-control"
+        maxlength="10"
+        [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+      />
+      <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+        <div *ngIf="f.phone.errors.required">phonenumber is required</div>
+        <div *ngIf="f.phone.errors.phone">phonenumber is invalid</div>
+      </div>
+    </div>
+    <div class="form-check">
+      <div><label>GENDER</label></div>
+      <input
+        class="form-check-input"
+        type="radio"
+        name="flexRadioDefault"
+        formControlName="gender"
+        id="flexRadioDefault1"
+        value="male"
+        checked
+      />
+      <label class="form-check-label" for="flexRadioDefault1"> MALE </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="flexRadioDefault"
+        formControlName="gender"
+        value="female"
+        id="flexRadioDefault2"
+      />
+      <label class="form-check-label" for="flexRadioDefault2"> FEMALE </label>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" (click)="onSubmit()" class="btn btn-primary">
+        Register
+      </button>
+      <button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-warning float-right"
+      >
+        Reset
+      </button>
+    </div>
+  </form>
+</div>
